@@ -1,3 +1,5 @@
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Scanner;
 
 /**
@@ -10,11 +12,19 @@ public class InteractRunner {
 		try {
 			Calculator calc = new Calculator();
 			String exit = "no";
+			boolean wasCalculating = false;
 			while (!exit.equals("yes")) {
-				System.out.println("Enter first arg : ");
-				String first = reader.next();
+				String first, second;
+
+				if (!wasCalculating) {
+					System.out.println("Enter first arg : ");
+					first = reader.next();
+				}
+				else
+					first = Integer.toString(calc.getResult());
 				System.out.println("Enter second arg : ");
-				String second = reader.next();
+				second = reader.next();
+
 				System.out.println("Case action: 1.+ 2.- 3.* 4./ 5.^");
 				int action = Integer.valueOf(reader.next());
 				switch (action){
@@ -38,12 +48,23 @@ public class InteractRunner {
 					calc.pow(Integer.valueOf(first), Integer.valueOf(second));
 					break;
 				}
+
 				System.out.println("Result : " + calc.getResult());
-				calc.cleanResult();
+				wasCalculating = true;
+
 				System.out.println("Exit : yes/no ");
 				exit = reader.next();
+
+				if(exit.equals("no"))
+					System.out.println("Clear result : yes/no ");
+				String resultActin = reader.next();
+
+				if(resultActin.equals("yes"))
+					calc.cleanResult();
+
 			}
 		} finally {
+
 			reader.close();
 		}
 	}
