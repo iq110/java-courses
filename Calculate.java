@@ -1,9 +1,16 @@
+import java.lang.Math;
 import java.lang.String;
 import java.lang.Throwable;
 
 public class Calculate{
 
    public static void main(String[] arg) throws Throwable{
-    System.out.println("Calculate!!!");
+       int first = Integer.valueOf(arg[0]);
+       int second = Integer.valueOf(arg[1]);
+    System.out.println("sum    "+ (first+second));
+    System.out.println("minus    "+ (first-second));
+    System.out.println("multiplay    "+ (first*second));
+    System.out.println("divide    "+ (first/second));
+    System.out.println("pow    "+ (Math.pow(first,second)));
    }
 }
