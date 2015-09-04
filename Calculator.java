@@ -1,3 +1,5 @@
+import java.lang.Exception;
+
 /**
 	Eeann ?aaeecoao eaeueoeyoi?.
 */
@@ -16,7 +18,11 @@ public class Calculator {
 			this.result += param;
 		}	
 	}
-	
+
+    /**
+     * Отнимание
+     * @param params Входящие аргументы
+     */
 	public void minus(int ... params){
 		this.result = params[0];
 		for(int i = 1; i < params.length; i++){
@@ -24,20 +30,36 @@ public class Calculator {
 		}
 	}
 
+    /**
+     * Умножение
+     * @param params Входящие аргументы
+     */
     public void multiply(int ... params) {
         this.result = params[0];
         for(int i = 1; i < params.length; i++){
             this.result*=params[i];
         }
     }
-	
-		public void div(int ... params){
+
+    /**
+     * Выполняем деление
+     * @param params Входящие аргументы
+     *                  если делитель равен нулю - выкинуть исключение
+     */
+		public void div(int ... params) throws Exception{
 		this.result = params[0];
 		for(int i = 1; i < params.length; i++){
+            if(params[i]==0) {
+                throw new Exception("Division by zero!!!");
+            }
 			this.result/=params[i];
 		}
 	}
-	
+
+    /**
+     * Возедение в степень
+     * @param params Входящие аргументы
+     */
 	public void pow(int ... params){
 		this.result = params[0];
 		for(int i = 1; i < params.length; i++){
